@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-x6$ktcwwcak8_ptfzganwv+t_1e1jsgps__bg8aw3nceo3om^_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -131,8 +131,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
-STATICFILES_DIRS =  (os.path.join(BASE_DIR,'static'),)
+# STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -172,11 +172,12 @@ SIMPLE_JWT = {
 
 PASSWORD_RESET_TIMEOUT=900          # 900 Sec = 15 Min
 
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:3000",
-#     "http://127.0.0.1:3000",
-# ]
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "https://fabulous-treacle-60c96b.netlify.app",
+]
+# CORS_ALLOW_ALL_ORIGINS = True
 APPEND_SLASH=False
 
 django_heroku.settings(locals())
