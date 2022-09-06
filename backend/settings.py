@@ -13,7 +13,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 from datetime import timedelta
 import os
-
+import django_heroku
+import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,7 +28,7 @@ SECRET_KEY = 'django-insecure-x6$ktcwwcak8_ptfzganwv+t_1e1jsgps__bg8aw3nceo3om^_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -130,6 +131,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
+STATICFILES_DIRS =  (os.path.join(BASE_DIR,'static'),)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -175,3 +178,5 @@ PASSWORD_RESET_TIMEOUT=900          # 900 Sec = 15 Min
 # ]
 CORS_ALLOW_ALL_ORIGINS = True
 APPEND_SLASH=False
+
+django_heroku.settings(locals())
